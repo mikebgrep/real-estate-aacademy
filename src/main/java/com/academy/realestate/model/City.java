@@ -1,22 +1,21 @@
 package com.academy.realestate.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Getter
 @Builder
+@Getter
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "neighborhoods")
-public class Neighborhood {
-
+@Table(name = "cities")
+public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,12 +24,8 @@ public class Neighborhood {
     @Column(nullable = false, unique = true)
     private String name;
 
+    @OneToMany(mappedBy = "neighborhoods")
+    private Set<Neighborhood> neighborhoods;
 
-    @ManyToMany
-    @JoinTable(
-            name = "cities_neighborhoods",
-            joinColumns = @JoinColumn(name = "city_id"),
-            inverseJoinColumns = @JoinColumn(name = "neighborhoods_id"))
-    private City city;
 
 }
