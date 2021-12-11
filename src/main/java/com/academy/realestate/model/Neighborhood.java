@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Getter
 @Builder
@@ -26,11 +27,7 @@ public class Neighborhood {
     private String name;
 
 
-    @ManyToMany
-    @JoinTable(
-            name = "cities_neighborhoods",
-            joinColumns = @JoinColumn(name = "city_id"),
-            inverseJoinColumns = @JoinColumn(name = "neighborhoods_id"))
-    private City city;
+    @ManyToMany(mappedBy = "neighborhoods")
+    private Set<City> city;
 
 }

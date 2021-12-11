@@ -1,4 +1,4 @@
-package com.academy.realestate.service.impl.functional;
+package com.academy.realestate.service.impl.func;
 
 import com.academy.realestate.exception.DuplicateResourceException;
 import com.academy.realestate.exception.ResourceNotFoundException;
@@ -21,10 +21,10 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 //Integration test
+@SpringBootTest
 @RunWith(SpringRunner.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-@SpringBootTest
-public class FloorServiceFunctionalTest {
+public class FloorServiceFuncTest {
 
     @Autowired
     private FloorService floorService;
@@ -92,7 +92,7 @@ public class FloorServiceFunctionalTest {
     public void verifyFindByNumber() {
         Floor savedFloor = floorRepository.save(Floor.builder().number(1).build());
         Floor actual = floorService.findByNumber(savedFloor.getNumber());
-        assertEquals(actual.getNumber(), is(savedFloor.getNumber()));
+        assertEquals(actual.getNumber(), savedFloor.getNumber());
 
     }
 

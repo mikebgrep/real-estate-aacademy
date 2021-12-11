@@ -68,7 +68,7 @@ public class FloorController {
         return ResponseEntity.ok(floorConverter.toFloorDto(updateFloor));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<HttpStatus> delete(@PathVariable(value = "id") Long id1){
         floorService.delete(id1);
         return ResponseEntity.ok().build();
