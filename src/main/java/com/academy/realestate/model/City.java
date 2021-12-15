@@ -24,7 +24,11 @@ public class City {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "neighborhoods")
+    @ManyToMany
+    @JoinTable(
+            name = "cities_neighborhoods",
+            joinColumns = @JoinColumn(name = "city_id"),
+            inverseJoinColumns = @JoinColumn(name = "neighborhood_id"))
     private Set<Neighborhood> neighborhoods;
 
 

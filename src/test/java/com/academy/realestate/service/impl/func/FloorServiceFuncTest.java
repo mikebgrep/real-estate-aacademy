@@ -1,4 +1,4 @@
-package com.academy.realestate.service.impl.functional;
+package com.academy.realestate.service.impl.func;
 
 import com.academy.realestate.exception.DuplicateResourceException;
 import com.academy.realestate.exception.ResourceNotFoundException;
@@ -20,10 +20,18 @@ import java.util.Set;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
+<<<<<<< HEAD:src/test/java/com/academy/realestate/service/impl/functional/FloorServiceFunctionalTest.java
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class FloorServiceFunctionalTest {
+=======
+//Integration test
+@SpringBootTest
+@RunWith(SpringRunner.class)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+public class FloorServiceFuncTest {
+>>>>>>> ce1fbcc52795905d85b88a19e806f02a75361bf4:src/test/java/com/academy/realestate/service/impl/func/FloorServiceFuncTest.java
 
     @Autowired
     private FloorService floorService;
@@ -91,7 +99,12 @@ public class FloorServiceFunctionalTest {
     @Test
     public void verifyFindByNumber() {
         Floor savedFloor = floorRepository.save(Floor.builder().number(1).build());
+<<<<<<< HEAD:src/test/java/com/academy/realestate/service/impl/functional/FloorServiceFunctionalTest.java
         Floor actual = floorService.findByNumber(1);
+=======
+        Floor actual = floorService.findByNumber(savedFloor.getNumber());
+        assertEquals(actual.getNumber(), savedFloor.getNumber());
+>>>>>>> ce1fbcc52795905d85b88a19e806f02a75361bf4:src/test/java/com/academy/realestate/service/impl/func/FloorServiceFuncTest.java
 
         assertEquals(actual.getNumber(), savedFloor.getNumber());
     }
